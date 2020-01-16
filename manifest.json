@@ -1,0 +1,14 @@
+{
+  "name": "News App",
+  "short_name": "News App",
+  "start_url": "/",
+  "background_color": "#f4f4f4",
+  "theme_color": "#034208",
+  "orientation": "any",
+  "display": "standalone",
+  "scope": "/",
+  "serviceworker": {
+    "src": "service-worker.js",
+    "scope": "/"
+  }
+}
