@@ -1,6 +1,7 @@
 const apiKey = '1028726326a14f8da0fa5cc346d9ff5b';
-const main = document.querySelector('#main');
+const newsSelector = document.querySelector('#newsSelector');
 const sourceSelector = document.querySelector('#sourceSelector');
+let defaultSource = 'abc-news';
 
 const validateResponse = (response) => {
   if(!response.ok) {
@@ -13,57 +14,11 @@ const convertResponseToJSON = (response) => {
   return response.json();
 }
 
-const createSource = (source) => {
+const formatSource = (source) => {
   let option = document.createElement('option');
   option.value = source.id
   option.textContent = source.name;
   sourceSelector.appendChild(option);
-}
-
-const createNews = (news) => {
-  return `
-    <article>
-      <small class="left"><strong>Published On: </strong>${news.publishedAt}</small>
-      <img src="${news.urlToImage}" alt="${news.title}">
-      <h2>${news.title}</h2>
-      <p>${news.description}</p>
-      <small class="right"><strong>Author: </strong>${news.author}</small>
-    </article>
-  `;
-
-  // const article = document.createElement('article');
-
-  // let img = document.createElement('img');
-  // img.src = news.urlToImage;
-
-  // let h2 = document.createElement('h2');
-  // h2.textContent=news.title;
-
-  // let p = document.createElement('p');
-  // p.textContent=news.description;
-
-  // let div1 = document.createElement('div');
-  // let strong1 = document.createElement('strong');
-  // strong1.textContent = 'Author: ';
-  // let small1 = document.createElement('small');
-  // small1.textContent = news.author;
-  // div1.appendChild(strong1);
-  // div1.appendChild(small1);
-
-  // let div2 = document.createElement('div');
-  // let strong2 = document.createElement('strong');
-  // strong2.textContent = 'Published On: ';
-  // let small2 = document.createElement('small');
-  // small2.textContent = news.publishedAt;
-  // div2.appendChild(strong2);
-  // div2.appendChild(small2);
-
-  // article.appendChild(img);
-  // article.appendChild(h2);
-  // article.appendChild(p);
-  // article.appendChild(div1);
-  // article.appendChild(div2);
-  // main.appendChild(article);
 }
 
 const loadSources = () => {
@@ -73,33 +28,47 @@ const loadSources = () => {
     .then(result => {
       let sources = result.sources;
       sources.forEach(source => {
-        createSource(source);
+        formatSource(source);
       })
     })
     .catch(error => console.log(error));
 }
 
-const loadNews = (source = 'abc-news') => {
-  fetch(`https://newsapi.org/v2/top-headlines?sources=${source}&apiKey=${apiKey}`)
-    .then(validateResponse)
-    .then(convertResponseToJSON)
-    .then(result => {
-      let articles = result.articles;
-      articles.map(news => {
-        // let newsSource = createNews(news);
-        main.innerHTML = createNews(news);
-
-      })
-      // main.innerHTML = newsSource;
-    })
-    .catch(error => console.log(error));
+const formatArticle = (article) => {
+  if(article.urlToImage === 'null') {
+    article.urlToImage = '../img/png-news.png';
+  }
+  return `
+    <article>
+      <img src="${article.urlToImage}" alt="${article.title}">
+      <h2>${article.title}</h2>
+      <p>${article.description}</p>
+      <br />
+      <div>
+        <small class="left"><strong>Published On: </strong>${article.publishedAt}</small>
+        <small class="right"><strong>Author: </strong>${article.author}</small>
+      </div>
+    </article>
+  `
 }
 
-window.addEventListener('load', (e) => {
+const loadNews = async(source = defaultSource) => {
+  try{
+    const news = await fetch(`https://newsapi.org/v2/top-headlines?sources=${source}&apiKey=${apiKey}`);
+    const validateNews = await validateResponse(news);
+    const toJSON = await convertResponseToJSON(validateNews);
+    newsSelector.innerHTML = toJSON.articles.map(formatArticle).join('\n');
+  } catch(error) {
+    console.log(error);
+  }
+}
+
+window.addEventListener('load', async (e) => {
   loadSources();
-  loadNews();
-});
-sourceSelector.addEventListener('change', async(e) => {
-  console.log(e.target.value);
-  await loadNews(e.target.value);
+  await loadNews();
+  sourceSelector.value = defaultSource;
+
+  sourceSelector.addEventListener('change', async(e) => {
+    await loadNews(e.target.value);
+  });
 });

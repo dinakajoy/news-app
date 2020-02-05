@@ -20,6 +20,10 @@ body {
   padding: 40px 20px;
   text-align: center;
 }
+.main {
+  width: 95%;
+  margin: 50px auto;
+}
 .select {
   width: 80%;
   margin: 10px auto;
@@ -37,9 +41,8 @@ option {
   border-radius: 20px;
   border: 2px solid var(--dark-color);
 }
-.main {
-  margin: 50px auto;
-  width: 95%;
+.news {
+  margin-top: 50px;
 }
 article {
   background-color: #86838378;
