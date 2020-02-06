@@ -44,7 +44,7 @@ const formatArticle = (article) => {
         <img src="${article.urlToImage}" alt="${article.title}">
         <div class="details">
           <h2>${article.title}</h2>
-          <p>${article.description}</p>
+          <p>${article.description.slice(0, 100)}...</p>
           <br />
           <small><strong>Published On: </strong>${article.publishedAt}</small>
           <small><strong>Author: </strong>${article.author}</small>
