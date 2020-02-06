@@ -36,18 +36,20 @@ const loadSources = () => {
 
 const formatArticle = (article) => {
   if(article.urlToImage === 'null') {
-    article.urlToImage = '../img/png-news.png';
+    article.urlToImage = '../images/png-news.png';
   }
   return `
     <article>
-      <img src="${article.urlToImage}" alt="${article.title}">
-      <h2>${article.title}</h2>
-      <p>${article.description}</p>
-      <br />
-      <div>
-        <small class="left"><strong>Published On: </strong>${article.publishedAt}</small>
-        <small class="right"><strong>Author: </strong>${article.author}</small>
-      </div>
+      <a href="${article.url}" target="_BLANK">
+        <img src="${article.urlToImage}" alt="${article.title}">
+        <div class="details">
+          <h2>${article.title}</h2>
+          <p>${article.description}</p>
+          <br />
+          <small><strong>Published On: </strong>${article.publishedAt}</small>
+          <small><strong>Author: </strong>${article.author}</small>
+        </div>
+      </a>
     </article>
   `
 }
@@ -72,3 +74,13 @@ window.addEventListener('load', async (e) => {
     await loadNews(e.target.value);
   });
 });
+
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('../service-worker.js')
+      .then(reg => console.log('Service worker was successfully registered'))
+      .catch(error => console.log(`There was an error: ${error}`));
+  })
+} else {
+  console.log('Service Worker is not supported in this browser');
+}

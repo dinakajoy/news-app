@@ -1,0 +1,12 @@
+{
+  "articles": [
+    {
+      "title": "Could not fetch data",
+      "urlToImage": "../images/offline.png",
+      "description": "It seems you are offline. Please try to connect your network and reload",
+      "url": "#",
+      "publishedAt": "Now",
+      "author": "Browser"
+    }
+  ]
+}
