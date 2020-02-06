@@ -1,5 +1,5 @@
 # news-app
-A news app where you can read up latest news on different topics such as technology, health, science, etc 
+A news app where you can read up latest news on different topics such as technology, health, science, etc    
 It is a Progressive Web Application, so users can install it on their devices
 
 ## Description
@@ -8,8 +8,8 @@ It consumes newsapi.org's API.
 
 ## Installation
 Clone the repository and cd into the project directory  
-Open with live server or open index.html file in your browser 
-Register on newsapi.org to get your api key and change the existing one in main.js file
+Open with live server or open index.html file in your browser    
+Register on newsapi.org to get your api key and change the existing one in main.js file   
 
 ## Usage
 Select source from the drop down to get updated news content based on selected source. 
