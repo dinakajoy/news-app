@@ -36,7 +36,7 @@ const loadSources = () => {
 
 const formatArticle = (article) => {
   if(article.urlToImage === 'null') {
-    article.urlToImage = 'https://dinakajoy.github.io/news-app/images/png-news.png';
+    article.urlToImage = 'https://odinaka-joy.github.io/news-app/images/png-news.png';
   }
   return `
     <article>
@@ -77,7 +77,7 @@ window.addEventListener('load', async (e) => {
 
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('https://dinakajoy.github.io/news-app/service-worker.js')
+    navigator.serviceWorker.register('https://odinaka-joy.github.io/news-app/service-worker.js')
       .then(reg => console.log('Service worker was successfully registered'))
       .catch(error => console.log(`There was an error: ${error}`));
   })
