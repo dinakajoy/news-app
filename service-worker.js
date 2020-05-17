@@ -1,4 +1,4 @@
-const cacheName = 'v2';
+const cacheName = 'v1';
 
 self.addEventListener('install', (e) => {
   console.log('Service worker was successfully installed...');
@@ -36,7 +36,7 @@ self.addEventListener('fetch', (e) => {
       })
       .catch (error => caches.match(e.request)
         .then(cachedResponse => {
-          return cachedResponse || fetch('./js/fallback.json')
+          return cachedResponse || fetch('https://dinakajoy.github.io/news-app/js/fallback.json')
         })
       )
   )

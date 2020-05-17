@@ -20,10 +20,11 @@ This is an installable app (PWA).
 * HTML - For the markup
 * CSS - For styling the user interface
 * JavaScript - For functionality
-* cache - To save files for offline usage 
+* Service worker - To cache files for offline usage 
+* Manifest.json - To add Progressive Web App capabilities 
 
 ## Link
 Access app via https://odinaka-joy.github.io/news-app/
 
 ## Author
-[Odinaka Joy](https://odinaka-joy.github.io)
+[Odinaka Joy](https://odinakajoy.com)

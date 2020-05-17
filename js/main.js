@@ -36,7 +36,7 @@ const loadSources = () => {
 
 const formatArticle = (article) => {
   if(article.urlToImage === 'null') {
-    article.urlToImage = '../images/png-news.png';
+    article.urlToImage = 'https://dinakajoy.github.io/news-app/images/png-news.png';
   }
   return `
     <article>
@@ -77,10 +77,18 @@ window.addEventListener('load', async (e) => {
 
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('../service-worker.js')
+    navigator.serviceWorker.register('https://dinakajoy.github.io/news-app/service-worker.js')
       .then(reg => console.log('Service worker was successfully registered'))
       .catch(error => console.log(`There was an error: ${error}`));
   })
 } else {
   console.log('Service Worker is not supported in this browser');
 }
+
+let deferredPrompt;
+
+// window.addEventListener('beforeinstallprompt', (e) => {
+//   e.preventDefault();
+//   deferredPrompt = e;
+//   showInstallPromotion();
+// });
