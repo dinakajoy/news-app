@@ -4,7 +4,7 @@
   "theme_color": "#5f6265",
   "background_color": "#a5bdd0",
   "display": "standalone",
-  "Scope": "https://dinakajoy.github.io/news-app/",
+  "Scope": "https://odinaka-joy.github.io/news-app/",
   "start_url": "https://odinaka-joy.github.io/news-app/",
   "orientation": "any",
   "icons": [
