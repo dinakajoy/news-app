@@ -24,7 +24,7 @@ This is an installable app (PWA).
 * Manifest.json - To add Progressive Web App capabilities 
 
 ## Link
-Access app via https://odinaka-joy.github.io/news-app/
+Access app via https://https://dinakajoy.github.io/news-app/
 
 ## Author
 [Odinaka Joy](https://odinakajoy.com)
