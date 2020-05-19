@@ -27,4 +27,4 @@ This is an installable app (PWA).
 Access app via https://https://dinakajoy.github.io/news-app/
 
 ## Author
-[Odinaka Joy](https://odinakajoy.com)
+[Odinaka Joy](https://dinakajoy.com)

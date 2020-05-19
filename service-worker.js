@@ -36,7 +36,7 @@ self.addEventListener('fetch', (e) => {
       })
       .catch (error => caches.match(e.request)
         .then(cachedResponse => {
-          return cachedResponse || fetch('https://odinaka-joy.github.io/news-app/js/fallback.json')
+          return cachedResponse || fetch('https://dinakajoy.github.io/news-app/js/fallback.json')
         })
       )
   )
