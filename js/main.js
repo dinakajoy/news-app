@@ -3,39 +3,28 @@ const newsSelector = document.querySelector('#newsSelector');
 const sourceSelector = document.querySelector('#sourceSelector');
 let defaultSource = 'abc-news';
 
-const validateResponse = (response) => {
-  if(!response.ok) {
-    throw Error (response.statusText);
-  }
-  return response;
-}
-
-const convertResponseToJSON = (response) => {
-  return response.json();
-}
-
 const formatSource = (source) => {
   let option = document.createElement('option');
-  option.value = source.id
+  option.value = source.id;
   option.textContent = source.name;
   sourceSelector.appendChild(option);
 }
 
-const loadSources = () => {
-  fetch(`https://newsapi.org/v2/sources?apiKey=${apiKey}`)
-    .then(validateResponse)
-    .then(convertResponseToJSON)
-    .then(result => {
-      let sources = result.sources;
-      sources.forEach(source => {
-        formatSource(source);
-      })
+const loadSources = async () => {
+  try {
+    const res = await fetch(`https://newsapi.org/v2/sources?apiKey=${apiKey}`);
+    const result = await res.json();
+    let sources = result.sources;
+    sources.forEach(source => {
+      formatSource(source);
     })
-    .catch(error => console.log(error));
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 const formatArticle = (article) => {
-  if(article.urlToImage === 'null') {
+  if (article.urlToImage === 'null') {
     article.urlToImage = 'https://dinakajoy.github.io/news-app/images/png-news.png';
   }
   return `
@@ -54,13 +43,12 @@ const formatArticle = (article) => {
   `
 }
 
-const loadNews = async(source = defaultSource) => {
-  try{
+const loadNews = async (source = defaultSource) => {
+  try {
     const news = await fetch(`https://newsapi.org/v2/top-headlines?sources=${source}&apiKey=${apiKey}`);
-    const validateNews = await validateResponse(news);
-    const toJSON = await convertResponseToJSON(validateNews);
+    const toJSON = await news.json();
     newsSelector.innerHTML = toJSON.articles.map(formatArticle).join('\n');
-  } catch(error) {
+  } catch (error) {
     console.log(error);
   }
 }
@@ -70,7 +58,7 @@ window.addEventListener('load', async (e) => {
   await loadNews();
   sourceSelector.value = defaultSource;
 
-  sourceSelector.addEventListener('change', async(e) => {
+  sourceSelector.addEventListener('change', async (e) => {
     await loadNews(e.target.value);
   });
 });
