@@ -1,6 +1,7 @@
 const apiKey = '1028726326a14f8da0fa5cc346d9ff5b';
 const newsSelector = document.querySelector('#newsSelector');
 const sourceSelector = document.querySelector('#sourceSelector');
+const error = document.querySelector('#error');
 let defaultSource = 'abc-news';
 
 const formatSource = (source) => {
@@ -15,10 +16,16 @@ const loadSources = async () => {
     const res = await fetch(`https://newsapi.org/v2/sources?apiKey=${apiKey}`);
     const result = await res.json();
     console.log(result);
-    let sources = result.sources;
-    sources.forEach(source => {
-      formatSource(source);
-    })
+    if(result.status === "ok") {
+      let sources = result.sources;
+      sources.forEach(source => {
+        formatSource(source);
+        error.style.display = 'none';
+      })
+    } else {
+      error.textContent = "Sorry, there was an error loading news...";
+      error.style.display = 'block';
+    }
   } catch (error) {
     console.log(error);
   }
@@ -49,7 +56,13 @@ const loadNews = async (source = defaultSource) => {
     const news = await fetch(`https://newsapi.org/v2/top-headlines?sources=${source}&apiKey=${apiKey}`);
     const result = await news.json();
     console.log(result);
-    newsSelector.innerHTML = result.articles.map(formatArticle).join('\n');
+    if(result.status === "ok") {
+      newsSelector.innerHTML = result.articles.map(formatArticle).join('\n');
+      error.style.display = 'none';
+    } else {
+      error.textContent = "Sorry, there was an error loading news...";
+      error.style.display = 'block';
+    }
   } catch (error) {
     console.log(error);
   }

@@ -82,6 +82,12 @@ img {
   width: 100%;
   height: 200px;
 }
+#error {
+  width: 100%;
+  text-align: center;
+  color: red;
+  margin: 10px auto;
+}
 @media screen and (min-width: 500px) {
   html {
     font-size: 18px;
