@@ -14,6 +14,7 @@ const loadSources = async () => {
   try {
     const res = await fetch(`https://newsapi.org/v2/sources?apiKey=${apiKey}`);
     const result = await res.json();
+    console.log(result);
     let sources = result.sources;
     sources.forEach(source => {
       formatSource(source);
@@ -46,8 +47,9 @@ const formatArticle = (article) => {
 const loadNews = async (source = defaultSource) => {
   try {
     const news = await fetch(`https://newsapi.org/v2/top-headlines?sources=${source}&apiKey=${apiKey}`);
-    const toJSON = await news.json();
-    newsSelector.innerHTML = toJSON.articles.map(formatArticle).join('\n');
+    const result = await news.json();
+    console.log(result);
+    newsSelector.innerHTML = result.articles.map(formatArticle).join('\n');
   } catch (error) {
     console.log(error);
   }
