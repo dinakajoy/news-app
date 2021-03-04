@@ -4,7 +4,7 @@ It is a Progressive Web Application, so users can install it on their devices
 
 ## Description
 This is a simple javascript application where users can access different news and also select any source from a drop down to get all their news for the day.
-It consumes newsapi.org's API.
+It consumes theguardian.com's API.
 
 ## Installation
 Clone the repository and cd into the project directory  
@@ -27,4 +27,4 @@ This is an installable app (PWA).
 Access app via https://https://dinakajoy.github.io/news-app/
 
 ## Author
-[Odinaka Joy](https://dinakajoy.com)
+[Odinaka Joy](http://dinakajoy.com)
