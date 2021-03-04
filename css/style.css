@@ -29,23 +29,6 @@ a {
   margin: 50px auto;
   display: block;
 }
-.select {
-  width: 80%;
-  margin: 10px auto;
-}
-option {
-  left: 0;
-}
-.source {
-  width: 100%;
-  padding: 5px 10px;
-  outline: none;
-  border: none;
-}
-.source:focus, .source:hover {
-  border-radius: 20px;
-  border: 2px solid var(--dark-color);
-}
 .news {
   margin-top: 50px;
 }
@@ -54,6 +37,8 @@ article {
   color: var(--dark-color);
   width: 100%;
   margin: 20px auto;
+}
+article:hover {
   box-shadow: 5px 5px 10px #034208;
 }
 article .details {
@@ -65,6 +50,7 @@ article h2 {
 }
 article p {
   color: #333;
+  font-weight: 600;
 }
 article strong {
   color: #034208;
