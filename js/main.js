@@ -4,13 +4,11 @@ const newsSelector = document.querySelector('#newsSelector');
 const error = document.querySelector('#error');
 
 const formatArticle = (article) => {
-  if (article.urlToImage === 'undefined') {
-    article.urlToImage = 'https://dinakajoy.github.io/news-app/images/png-news.png';
-  }
+  let urlToImage = 'https://dinakajoy.github.io/news-app/images/png-news.png';
   return `
     <article>
       <a href="${article.webUrl}" target="_BLANK">
-        <img src="${article.urlToImage}" alt="${article.title}">
+        <img src="${urlToImage}" alt="${article.webTitle}">
         <div class="details">
           <p>${article.webTitle}</p>
           <br />
