@@ -5,6 +5,7 @@ It is a Progressive Web Application, so users can install it on their devices
 ## Description
 This is a simple javascript application where users can access different news and also select any source from a drop down to get all their news for the day.
 It consumes theguardian.com's API.
+A news app where you can read up latest news on different topics such as technology, health, science, etc. This application consumes TheGuardian's API. Most organizations needs input from other organization on their website and an easy way to achieve this is via their api. This inspired me to build this application. I took the news feed from theGuardian and make up my news content rather than sourcing for news.
 
 ## Installation
 Clone the repository and cd into the project directory  
