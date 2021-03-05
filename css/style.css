@@ -64,6 +64,9 @@ article small {
   padding: 5px 20px;
   text-align: center;
 }
+.footer a {
+  color: #ccc;
+}
 img {
   width: 100%;
   height: 200px;
