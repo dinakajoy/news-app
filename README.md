@@ -10,7 +10,7 @@ Most organizations needs input from other organization on their website and an e
 ## Installation
 Clone the repository and cd into the project directory  
 Open with live server or open index.html file in your browser    
-Register on newsapi.org to get your api key and change the existing one in main.js file   
+Register on theguardian.com to get your api key and add as an environmenta variable    
 
 ## Usage
 Select source from the drop down to get updated news content based on selected source. 
