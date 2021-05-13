@@ -1,6 +1,6 @@
 # news-app
-A news app where you can read up latest news on different topics such as technology, health, science, etc    
-It is a Progressive Web Application, so users can install it on their devices
+A news app where you can read up latest news on different topics such as technology, health, science, etc.    
+It is a Progressive Web Application, so users can install it on their devices.  
 
 ## Description
 This is a simple javascript application where users can access different news for the day.
